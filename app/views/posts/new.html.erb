@@ -1,7 +1,7 @@
-<h2>Editing "<%= @post.title %>"</h2>
-<%= form_tag post_path(@post), method: "patch" do %>
+<h2>Create a Post</h2>
+<%= form_tag posts_path(@post), method: "post" do %>
   <% if @post.errors.any? %>
-    <div id="error_explanation">
+    <div id ="error_explanation">
       <h3>There were some errors:</h3>
       <ul>
         <% @post.errors.full_messages.each do |message| %>
@@ -18,7 +18,8 @@
   <% end %>
     <%= label_tag "title", "Title" %>
     <%= text_field_tag "title", @post.title %>
-  </div>
+    </div>
+
 
   <% if @post.errors[:category].empty? %>
     <div class="field">
@@ -26,13 +27,8 @@
     <div class="field_with_errors">
   <% end %>
     <%= label_tag "category", "Category" %>
-    <p>Must be either "Fiction" or "Non-Fiction".</p>
     <%= text_field_tag "category", @post.category %>
-    <p>
-      Please type carefully as our top scientists are working around the clock to
-      enable state-of-the-art dropdown technology for this form field.
-    </p>
-  </div>
+    </div>
 
   <% if @post.errors[:content].empty? %>
     <div class="field">
@@ -40,8 +36,7 @@
     <div class="field_with_errors">
   <% end %>
     <%= label_tag "content", "Content" %>
-    <br />
-    <%= text_area_tag "content", @post.content %>
-  </div>
-  <%= submit_tag "Update" %>
+    <%= text_field_tag "content", @post.content %>
+    </div>
+    <%= submit_tag "Create" %>
 <% end %>
